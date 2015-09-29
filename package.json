@@ -6,7 +6,9 @@
   "dependencies": {
     "body-parser": "^1.12.3",
     "node-arff": "0.0.4",
-    "node-weka": "0.0.8"
+    "node-weka": "0.0.8",
+    "mysql": "git://github.com/felixge/node-mysql",
+    "express": "^4.12.3"
   },
   "devDependencies": {
     "mysql": "git://github.com/felixge/node-mysql",
