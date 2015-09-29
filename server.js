@@ -9,10 +9,10 @@ var bodyParser = require('body-parser')
 
 var app = express();
 var jsonParser = bodyParser.json()
-
+var listenPort = process.env.PORT || 3000;
 // start server on port 3000
-app.listen(3000, function () {
-    console.log("Server listening on port 3000");
+app.listen(listenPort, function () {
+    console.log("Server listening on port " + listenPort);
 });
 
 // allow access to static content in public folder
