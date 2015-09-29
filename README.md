@@ -26,13 +26,13 @@ Instructions to run :
 5. Go to URL http://localhost:3000 on web browser
 6. To see station related results :
 
-    6.1. Enter station name like San Jose CA(autocomplete will help to select valid station)
-    6.2. Select month
-    6.3. Select attribute to predict
-    6.4. Output will show prediction of the attribute and the probability of it
-    6.5. The heat map will also depict the prediction made
+    * Enter station name like San Jose CA(autocomplete will help to select valid station)
+    * Select month
+    * Select attribute to predict
+    * Output will show prediction of the attribute and the probability of it
+    * The heat map will also depict the prediction made
 
 7. To see overall results for California and Arizona:
-    7.1. Select month
-    7.2. Select attribute to predict
-    7.3. The heat map will also depict overall results for each station
+    * Select month
+    * Select attribute to predict
+    * The heat map will also depict overall results for each station
