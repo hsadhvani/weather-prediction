@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Heatmaps</title>
+
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=visualization&.js"></script>
+   <SCRIPT TYPE="text/javascript">
+
+         function initialize() {
+        var mapOptions = {
+          zoom: 10,
+          center: new google.maps.LatLng(-37.826869,145.007098),
+          mapTypeId: google.maps.MapTypeId.MAP
+        };
+        map = new google.maps.Map(document.getElementById('map_canvas'),
+            mapOptions);
+            
+        //query the fusiontable via ajax    
+        $.ajax(
+                {
+                  dataType: 'jsonp',
+                  url     : 'https://www.googleapis.com/fusiontables/v1/query',
+                  data    : {
+                              sql:'SELECT Lat,Long,Hits \
+                                   from 1LL0eWI89nGxJ17XZDbWKsWahPyzQCAH8MHoAPSk',
+                              key:'AIzaSyCoiF1SlcuQPqoRdbP58ZCi3YrPx4wvMfg'
+                            },
+                  success:  function(data){
+                             var heatMapData=[];
+                               //prepare the data
+                             $.each(data.rows,function(i,r){
+                               heatMapData.push({
+                                   location:new google.maps.LatLng(r[0],r[1]),
+                                   weight:Number(r[2])
+                                 });
+                             });
+                               //create the weighted heatmap
+                              new google.maps.visualization.HeatmapLayer({
+                                  data: heatMapData,map:map
+                                  });
+                            }
+               });
+      }
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+
+      </SCRIPT>
+
+      <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+
+      <script type="text/javascript" src="//code.jquery.com/jquery-1.8.3.js"></script>
+   </head>
+
+  <body>
+   <div id="map_canvas" style="height:300px;"></div>
+  </body>
+</html>

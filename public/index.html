@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.js"></script>
+    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.4.0.js"></script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.8.3.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=visualization&.js"></script>
+
+    <script src="js/app.js"></script>
+
+    <meta charset="UTF-8">
+    <title>Weather for CA and AZ</title>
+</head>
+<body ng-app="weather_app">
+<br>
+
+<div class='container-fluid'  ng-controller="stationCtrl">
+    <b>Predict Weather for CA and AZ</b>
+    <br/>
+    <br/>
+    Select Station:
+
+    <input type="text" ng-model="selected" typeahead="station for station in station_list | filter:$viewValue" style="width: 250px;">
+<br/>
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
+            {{monthSelected}}
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+            <li role="presentation" ng-repeat="month in months" ng-click="selectMonth(month)">
+                <a role="menuitem" tabindex="-1" href="">{{month.name}}</a></li>
+
+
+
+        </ul>
+    </div>
+
+<br/>
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="true">
+            {{attributeSelected}}
+            <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+            <li role="presentation" ng-repeat="attribute in attributes" ng-click="selectAttribute(attribute)">
+                <a role="menuitem" tabindex="-1" href="">{{attribute.name}}</a></li>
+
+
+
+        </ul>
+    </div>
+
+    <br />
+    <button type="button" class="btn" ng-click="loadStationClassify()">Show Prediction for Station</button>
+
+    <button type="button" class="btn" ng-click="loadOverallData()">Show Prediction Overall</button>
+    <br/>
+    <br/>
+<div ng-show="stationIsSelected && showMap">
+    {{attributeLoaded}} for station {{selected}} in {{monthLoaded}}: {{outputData[0]['AVG']/unitToDivide}} {{unitToDisplay}}
+    </div>
+    <div ng-show="overallIsSelected && showMap">Overall {{attributeLoaded}} for CA and AZ in {{monthLoaded}}
+    </div>
+    <div ng-show="showClassify">
+       Expected {{attributeLoaded}} in {{selected}} in {{monthLoaded}} is {{chanceText}} with {{percentChance}}% in accuracy
+        </div>
+    <br/>
+    <div id="map_canvas" ng-show="showMap" style="height:300px;"></div>
+
+</div>
+
+
+</body>
+</html>
