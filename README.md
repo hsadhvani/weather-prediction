@@ -7,6 +7,8 @@ Weather Prediction for CA and AZ
 
 **Platform :** Unix
 
+**URL :** https://weather-prediction.herokuapp.com
+
 Requirements: to run project :
 
 1. Unix machine
