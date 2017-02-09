@@ -1,7 +1,7 @@
 Weather Prediction for CA and AZ
 ===============
 
-**Project by :**  Harsh Sadhvani, Shubham Saxena and Jaydeep Untwal
+**Project by :**  Harsh Sadhvani and Jaydeep Untwal
 
 **Technologies :**  Node.js, AngularJS, JavaScript, HTML, CSS, MySQL, Google Heat maps, Java and Weka
 
